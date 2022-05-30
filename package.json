@@ -1,0 +1,19 @@
+{
+  "name": "studio-cliq",
+  "version": "1.0.0",
+  "description": "monorepo of studio cliq",
+  "main": "index.js",
+  "repository": "git@github.com:studiocliq/studio-cliq.git",
+  "author": "cliq",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.1",
+  "workspaces": {
+    "packages": [
+      "package/*"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "typescript": "^4.7.2"
+  }
+}
