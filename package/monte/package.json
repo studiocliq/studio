@@ -1,8 +1,0 @@
-{
-  "name": "@studio-cliq/monte",
-  "packageManager": "yarn@3.2.1",
-  "main": "index.ts",
-  "devDependencies": {
-    "typescript": "^4.7.2"
-  }
-}
