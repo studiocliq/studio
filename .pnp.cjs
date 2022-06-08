@@ -5965,6 +5965,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-styled-components", "virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:2.0.7"],\
             ["gatsby", "virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:4.16.0"],\
             ["gatsby-image", "npm:3.11.0"],\
+            ["gatsby-plugin-gatsby-cloud", "virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:4.16.0"],\
             ["gatsby-plugin-image", "virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:2.15.0"],\
             ["gatsby-plugin-mdx", "virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:3.15.2"],\
             ["gatsby-plugin-react-helmet", "virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:5.15.0"],\
@@ -12885,6 +12886,39 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["gatsby-plugin-gatsby-cloud", [\
+        ["npm:4.16.0", {\
+          "packageLocation": "./.yarn/cache/gatsby-plugin-gatsby-cloud-npm-4.16.0-e7e40891a6-a6532303c1.zip/node_modules/gatsby-plugin-gatsby-cloud/",\
+          "packageDependencies": [\
+            ["gatsby-plugin-gatsby-cloud", "npm:4.16.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:4.16.0", {\
+          "packageLocation": "./.yarn/__virtual__/gatsby-plugin-gatsby-cloud-virtual-8d593ff8ba/0/cache/gatsby-plugin-gatsby-cloud-npm-4.16.0-e7e40891a6-a6532303c1.zip/node_modules/gatsby-plugin-gatsby-cloud/",\
+          "packageDependencies": [\
+            ["gatsby-plugin-gatsby-cloud", "virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:4.16.0"],\
+            ["@babel/runtime", "npm:7.18.3"],\
+            ["@types/gatsby", null],\
+            ["@types/webpack", null],\
+            ["fs-extra", "npm:10.1.0"],\
+            ["gatsby", "virtual:83d07bf13131cb1f3e6c3d7be4b7af84b576b962557cb588e9d63629faac64ef8ab109f4bc1d2f3c0e7d1fd77f8104a0980289923745236877ac46db2bfe91a1#npm:4.16.0"],\
+            ["gatsby-core-utils", "npm:3.16.0"],\
+            ["gatsby-telemetry", "npm:3.16.0"],\
+            ["kebab-hash", "npm:0.1.2"],\
+            ["lodash", "npm:4.17.21"],\
+            ["webpack", null],\
+            ["webpack-assets-manifest", "virtual:8d593ff8bab1950a902a8794b755bb8b38d906cb9cfcde50060c9f920b59e4ce676138fc5338d9b6750b4549a85af88938e1dcf5ba96349e3876a3759dcffd3a#npm:5.1.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/gatsby",\
+            "@types/webpack",\
+            "gatsby",\
+            "webpack"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["gatsby-plugin-image", [\
         ["npm:2.15.0", {\
           "packageLocation": "./.yarn/cache/gatsby-plugin-image-npm-2.15.0-be0b1f2ef6-f284327cb9.zip/node_modules/gatsby-plugin-image/",\
@@ -15829,6 +15863,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["kebab-hash", [\
+        ["npm:0.1.2", {\
+          "packageLocation": "./.yarn/cache/kebab-hash-npm-0.1.2-e130c7867f-d3e3ecd949.zip/node_modules/kebab-hash/",\
+          "packageDependencies": [\
+            ["kebab-hash", "npm:0.1.2"],\
+            ["lodash.kebabcase", "npm:4.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["keyv", [\
         ["npm:3.1.0", {\
           "packageLocation": "./.yarn/cache/keyv-npm-3.1.0-81c9ff4454-bb7e8f3acf.zip/node_modules/keyv/",\
@@ -16122,6 +16166,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lockfile", [\
+        ["npm:1.0.4", {\
+          "packageLocation": "./.yarn/cache/lockfile-npm-1.0.4-00301b5723-8de35aace8.zip/node_modules/lockfile/",\
+          "packageDependencies": [\
+            ["lockfile", "npm:1.0.4"],\
+            ["signal-exit", "npm:3.0.7"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["lodash", [\
         ["npm:4.17.21", {\
           "packageLocation": "./.yarn/cache/lodash-npm-4.17.21-6382451519-eb835a2e51.zip/node_modules/lodash/",\
@@ -16235,6 +16289,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash.get-npm-4.4.2-7bda64ed87-e403047ddb.zip/node_modules/lodash.get/",\
           "packageDependencies": [\
             ["lodash.get", "npm:4.4.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lodash.has", [\
+        ["npm:4.5.2", {\
+          "packageLocation": "./.yarn/cache/lodash.has-npm-4.5.2-0a10673e08-b3ec829a86.zip/node_modules/lodash.has/",\
+          "packageDependencies": [\
+            ["lodash.has", "npm:4.5.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lodash.kebabcase", [\
+        ["npm:4.1.1", {\
+          "packageLocation": "./.yarn/cache/lodash.kebabcase-npm-4.1.1-89ffca7e1f-5a6c591619.zip/node_modules/lodash.kebabcase/",\
+          "packageDependencies": [\
+            ["lodash.kebabcase", "npm:4.1.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -23452,6 +23524,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/webpack-cli",\
             "webpack-cli"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["webpack-assets-manifest", [\
+        ["npm:5.1.0", {\
+          "packageLocation": "./.yarn/cache/webpack-assets-manifest-npm-5.1.0-fad26f5290-30b0929f6a.zip/node_modules/webpack-assets-manifest/",\
+          "packageDependencies": [\
+            ["webpack-assets-manifest", "npm:5.1.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:8d593ff8bab1950a902a8794b755bb8b38d906cb9cfcde50060c9f920b59e4ce676138fc5338d9b6750b4549a85af88938e1dcf5ba96349e3876a3759dcffd3a#npm:5.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/webpack-assets-manifest-virtual-18aeb7a6b5/0/cache/webpack-assets-manifest-npm-5.1.0-fad26f5290-30b0929f6a.zip/node_modules/webpack-assets-manifest/",\
+          "packageDependencies": [\
+            ["webpack-assets-manifest", "virtual:8d593ff8bab1950a902a8794b755bb8b38d906cb9cfcde50060c9f920b59e4ce676138fc5338d9b6750b4549a85af88938e1dcf5ba96349e3876a3759dcffd3a#npm:5.1.0"],\
+            ["@types/webpack", null],\
+            ["chalk", "npm:4.1.2"],\
+            ["deepmerge", "npm:4.2.2"],\
+            ["lockfile", "npm:1.0.4"],\
+            ["lodash.get", "npm:4.4.2"],\
+            ["lodash.has", "npm:4.5.2"],\
+            ["schema-utils", "npm:3.1.1"],\
+            ["tapable", "npm:2.2.1"],\
+            ["webpack", null]\
+          ],\
+          "packagePeers": [\
+            "@types/webpack",\
+            "webpack"\
           ],\
           "linkType": "HARD"\
         }]\
