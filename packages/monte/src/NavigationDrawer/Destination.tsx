@@ -1,8 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
 
-const Anchor = styled(Link)<{ activated?: boolean }>`
+const Anchor = styled.a< { activated?: boolean } >`
   display: flex;
   align-items: center;
   
@@ -40,7 +39,7 @@ type Props = {
 
 function Destination({ link, text, activated = false}: Props) {
   return (
-    <Anchor to={link} activated={activated}>
+    <Anchor href={link} activated={activated}>
       { text }
     </Anchor>
   );

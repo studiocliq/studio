@@ -1,28 +1,27 @@
 import React from 'react';
 import styled, { CSSProperties } from 'styled-components';
-import { Badge } from '@studio-cliq/monte';
-import Img, { FluidObject } from 'gatsby-image';
+import Badge from '../Badges';
 
 type Props = {
   title: string;
   description: string;
   tags: string[] | string;
-  featuredImage: FluidObject;
+  featuredImage: JSX.Element;
 }
 
 const Container = styled.div`
   display: flex;
   gap: 45px;
   justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid #ededed;
+  align-items: center;
   padding: 30px;
   transition: .3s cubic-bezier(.155,1.105,.295,1.12);
 
   position: relative;
   top: 0;
 
-  &: hover {
+  &:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, .08);
     position: relative;
     top: -4px;
@@ -45,7 +44,7 @@ const Title = styled.h3`
   margin-bottom: 14px;
 
   font-size: 21px;
-  line-height; 1.53;
+  line-height: 1.53;
   font-weight: 700;
   color: #212121;
 `;
@@ -55,11 +54,11 @@ const Description = styled.div`
   color: #212121;
 `;
 
-const ImageWrapperStyle: CSSProperties = {
-  width: '170px',
-  height: '170px',
-  flexShrink: 0,
-}
+const ImageWrapper = styled.div`
+  width: 170px;
+  height: 170px;
+  flex-shrink: 0;
+`;
 
 function PostCard({ title, description, tags, featuredImage }: Props) {
   return (
@@ -76,7 +75,9 @@ function PostCard({ title, description, tags, featuredImage }: Props) {
         <Title>{ title }</Title>
         <Description>{description}</Description>
       </TextBox>
-      <Img fluid={featuredImage} style={ImageWrapperStyle} />
+      <ImageWrapper>
+        { featuredImage }
+      </ImageWrapper>
     </Container>
   );
 }

@@ -1,10 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.span`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  height: 24px;
   padding: 6px 8px;
   border-radius: 4px;
   background-color: #ef2c5a;
@@ -13,15 +13,11 @@ const Container = styled.span`
   color: #fff;
 `;
 
-type Props = {
+function Badge({ text }: {
   text: string;
-};
-
-function Badge({ text }: Props) {
+}) {
   return (
-    <Container>
-      { text }
-    </Container>
+    <Container>{ text }</Container>
   );
 }
 

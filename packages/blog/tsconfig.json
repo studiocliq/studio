@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "composite": true,
+    "moduleResolution": "node", /* Specify how TypeScript looks up a file from a given module specifier. */
+    "baseUrl": ".", /* Specify the base directory to resolve non-relative module names. */
+    "paths": {
+      "components/*": [
+        "./src/components/*"
+      ],
+      "pages/*": [
+        "./src/pages/*"
+      ],
+      "styles/*": [
+        "./src/styles/*"
+      ]
+    }, /* Specify a set of entries that re-map imports to additional lookup locations. */ // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
+    "allowJs": true,
+    "noEmit": false,
+    "incremental": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "custom.d.ts",
+    "next-env.d.ts"
+  ],
+  "exclude": []
+}

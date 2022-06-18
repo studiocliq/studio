@@ -1,9 +1,4 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
-
-import Logo from 'images/logo.png';
-import Destination from './Destination';
 
 const Container = styled.div<{ hide?: boolean }>`
   position: fixed;
@@ -25,20 +20,6 @@ const Container = styled.div<{ hide?: boolean }>`
   `};
 `;
 
-const Header = styled.div`
-  width: 100%;
-  height: 74px;
-
-  box-sizing: border-box;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 2px 0;
-  border-bottom: 1px solid rgb(219, 219, 219);
-`;
-
 const Scrim = styled.div<{ hide?: boolean }>`
   position: fixed;
   top: 0;
@@ -57,85 +38,32 @@ const Scrim = styled.div<{ hide?: boolean }>`
   `};
 `;
 
-const XButton = styled.button`
-  outline: none;
-  border: none;
+const Head = styled.div`
+  width: 100%;
+  height: 3.25rem;
+  border-bottom: 1px solid rgb(219, 219, 219);
+`
 
-  width: 23px;
-  height: 23px;
-  margin-right: 8px;
-  background-color: transparent;
-
-  font-size: 18px;
-  cursor: pointer;
-`;
-
-const NavList = styled.ul`
-  display: flex;
-  flex-direction: column;
-
-  padding: 0;
-
-  list-style: none;
+const Menu = styled.ul`
+  color: #757575;
 `;
 
 type Props = {
   isOpen: boolean;
   close: () => void;
-}
+  head: JSX.Element;
+  items: JSX.Element | JSX.Element[];
+};
 
-const links = [
-  {
-    name: 'Front',
-    link: '/front',
-  },
-  {
-    name: 'Algorhithm',
-    link: '/algorhithm',
-  },
-  {
-    name: 'Essay',
-    link: '/essay',
-  }
-];
-
-function ModalNavigationDrawer({ isOpen, close }: Props) {
+function ModalNavigationDrawer({ isOpen, close, head, items }: Props) {
   return (
     <>
       <Scrim onClick={close} hide={!isOpen} />
       <Container hide={!isOpen}>
-        <Header>
-          <Link
-            to="/"
-            style={{
-              height: '20px',
-              paddingLeft: '16px',
-            }}
-          >
-            <img
-              src={Logo}
-              alt="studio cliq logo"
-              style={{
-                objectFit: 'contain',
-                height: '100%',
-              }}
-            />
-          </Link>
-          <XButton onClick={close}>X</XButton>
-        </Header>
-        <NavList>
-          {
-            links.map((item, index) => (
-              <li key={item.name}>
-                <Destination
-                  link={item.link}
-                  text={item.name}
-                  activated={index === 0}
-                />
-              </li>
-            ))
-          }
-        </NavList>
+        <Head>{ head }</Head>
+        <Menu>
+          { items }
+        </Menu>
       </Container>
     </>
   );
