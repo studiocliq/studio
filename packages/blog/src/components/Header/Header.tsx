@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { NavigationDrawer } from '@studio/monte';
 import useToggle from './useToggle';
+import Sidebar from './Sidebar';
 
 const Wrap = styled.div<{ yPosition: number }>`
   position: fixed;
@@ -35,6 +35,11 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
+const Empty = styled.div`
+  height: 24px;
+  width: 24px;
+`;
+
 function Header() {
   const [toggle, changeToggle] = useToggle();
   const [scrollPosition, setScrollPosition] = useState<number>(0);
@@ -57,33 +62,8 @@ function Header() {
       <Wrap yPosition={scrollPosition}>
         <Container>
           <Image src="/images/icons/menu.svg" alt="menu icon" onClick={changeToggle} width="24px" height="24px" />
-          <Link
-            href="/"
-          >
-              <a>
-                <Image
-                  src="/images/logo.png"
-                  alt="studio cliq logo"
-                  width="147px"
-                  height="30px"
-                />
-              </a>
-          </Link>
-          <div> search icon</div>
-        </Container>
-      </Wrap>
-      <NavigationDrawer
-        close={changeToggle}
-        isOpen={toggle}
-        head={
-          <Link
-            href="/"
-            style={{
-              height: '20px',
-              paddingLeft: '16px',
-            }}
-          >
-            <a onClick={changeToggle}>
+          <Link href="/">
+            <a>
               <Image
                 src="/images/logo.png"
                 alt="studio cliq logo"
@@ -92,12 +72,12 @@ function Header() {
               />
             </a>
           </Link>
-        }
-        items={
-          <div>
-            hello
-          </div>
-        }
+          <Empty />
+        </Container>
+      </Wrap>
+      <Sidebar
+        close={changeToggle}
+        isOpen={toggle}
       />
     </>
   );

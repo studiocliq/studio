@@ -39,30 +39,44 @@ const Scrim = styled.div<{ hide?: boolean }>`
 `;
 
 const Head = styled.div`
+  box-sizing: border-box;
   width: 100%;
-  height: 3.25rem;
+  /* height: 3.25rem; */
   border-bottom: 1px solid rgb(219, 219, 219);
+  padding: 20px;
 `
 
 const Menu = styled.ul`
+  padding: 30px 0 0;
+`;
+
+const Item = styled.li`
   color: #757575;
+
+  padding: 24px 16px;
+  font-size: .9rem;
+  
+  &:hover {
+    color: rgba(0, 0, 0, .87);
+    background-color: rgba(0, 0, 0, .04);
+  }
 `;
 
 type Props = {
   isOpen: boolean;
   close: () => void;
   head: JSX.Element;
-  items: JSX.Element | JSX.Element[];
+  links: JSX.Element[];
 };
 
-function ModalNavigationDrawer({ isOpen, close, head, items }: Props) {
+function ModalNavigationDrawer({ isOpen, close, head, links }: Props) {
   return (
     <>
       <Scrim onClick={close} hide={!isOpen} />
       <Container hide={!isOpen}>
         <Head>{ head }</Head>
         <Menu>
-          { items }
+          { links.map((link) => (<Item>{ link }</Item>)) }
         </Menu>
       </Container>
     </>

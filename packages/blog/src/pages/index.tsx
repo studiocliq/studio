@@ -5,10 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import BlogPostWrapper from 'components/BlogPostWrapper';
+import { getAllPostMetadata } from 'src/utils/posts';
+
+import { PostCard } from '@studio/monte';
 
 import DefaultLayout from '../templates/DefaultLayout';
-import { PostCard } from '@studio/monte';
-import { getAllBlogPostPaths } from 'src/utils/posts';
 
 const Wrap = styled.div`
   display: flex;
@@ -32,43 +33,40 @@ type Props = {
 };
 
 function IndexPage({ allPostsData }: Props) {
-  console.log(allPostsData);
   return (
     <DefaultLayout>
-      <>
-        <Wrap>
-          <Main>
-            <BlogPostWrapper title="Tech">
-              {
-                allPostsData.map((post) => (
-                  <Link key={post.pid} href={`/posts/${post.pid}`}>
-                    <a>
-                      <PostCard
-                        title={post.title}
-                        description={post.description}
-                        tags={post.tags}
-                        featuredImage={
-                          <Image
-                            src={post.featuredImage}
-                            width={170}
-                            height={170}
-                          />
-                        }
-                      />
-                    </a>
-                  </Link>
-                ))
-              }
-            </BlogPostWrapper>
-          </Main>
-        </Wrap>
-      </>
+      <Wrap>
+        <Main>
+          <BlogPostWrapper title="Tech">
+            {
+              allPostsData.map((post) => (
+                <Link key={post.pid} href={`/posts/${post.pid}`}>
+                  <a>
+                    <PostCard
+                      title={post.title}
+                      description={post.description}
+                      tags={post.tags}
+                      featuredImage={
+                        <Image
+                          src={post.featuredImage}
+                          width={170}
+                          height={170}
+                        />
+                      }
+                    />
+                  </a>
+                </Link>
+              ))
+            }
+          </BlogPostWrapper>
+        </Main>
+      </Wrap>
     </DefaultLayout>
   );
 }
 
 export async function getStaticProps() {
-  const allPostsData = getAllBlogPostPaths();
+  const allPostsData = getAllPostMetadata();
 
   return {
     props: {
@@ -77,4 +75,4 @@ export async function getStaticProps() {
   }
 }
 
-export default IndexPage
+export default IndexPage;

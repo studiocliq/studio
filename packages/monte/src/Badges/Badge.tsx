@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { colors } from '../Styles';
+
 const Container = styled.span`
   display: inline-flex;
   align-items: center;
@@ -7,7 +9,7 @@ const Container = styled.span`
 
   padding: 6px 8px;
   border-radius: 4px;
-  background-color: #ef2c5a;
+  background-color: ${colors.main};
 
   font-size: 12px;
   color: #fff;

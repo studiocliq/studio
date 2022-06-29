@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import Head from 'next/head';
+
 import DefaultLayout from './DefaultLayout';
 
-import Prism from 'prismjs';
-
-import "prismjs/themes/prism-okaidia.css";
-import Head from 'next/head';
+import 'prismjs/themes/prism-tomorrow.css';
 
 const PostWrapper = styled.main`
   max-width: 620px;
@@ -14,7 +13,7 @@ const PostWrapper = styled.main`
 
   p {
     line-height: 2;
-    word-break: keep-all;
+    word-break: break-all;
     margin-bottom: 2rem;
   }
 
@@ -27,27 +26,27 @@ const PostWrapper = styled.main`
   }
 
   ul {
-    list-style: circle inside;
+    list-style: circle outside;
+    margin-left: 20px;
   }
 
   ol {
-    list-style: number inside;
+    list-style: number outside;
+    margin-left: 20px;
   }
 
   li {
     margin-bottom: 1.375rem;
+    line-height: 1.8;
+    list-style-position: outside;
   }
 
   a {
     color: #ef2c5a;
 
-    &: hover {
+    &:hover {
       text-decoration: underline;
     }
-  }
-
-  pre {
-    margin: 1.75rem 0;
   }
 
   br {
@@ -64,41 +63,58 @@ const PostWrapper = styled.main`
   }
 
   h2 {
+    line-height: 1.3;
     font-size: 1.6rem;
     margin-bottom: 1rem;
     font-weight: 500;
   }
 
   h3 {
+    line-height: 1.8;
     font-size: 1.4rem;
     margin-bottom: 1rem;
     font-weight: 500;
   }
 
-  .meta-date {
-    color: #292929;
-    font-weight: 400;
-    font-size: .8rem;
-    display: block;
+  hr {
+    height: 1px;
+    background-color: rgba(0, 0, 0, .12);
+    border: none;
   }
-  
+
+  code:not([class]) {
+    display: inline-block;
+
+    padding: .1rem .3rem;
+    margin: 0 .1rem;
+    font-size: .8rem;
+
+    line-height: 1.2;
+    font-weight: 500;
+    border-radius: 3px;
+    background-color: rgba(239, 44, 90, .06);
+    color: rgb(212, 44, 90);
+  }
 `;
 
-const ContentWrapper = styled.div`
-  margin: 1.875rem 0;
+const PostHeader = styled.header`
+  margin-bottom: 40px;
+`;
+
+const Date = styled.span`
+  color: #292929;
+  font-weight: 400;
+  font-size: .8rem;
+  display: block;
 `;
 
 type Props = {
-  children: JSX.Element | string;
+  children: JSX.Element;
   title: string;
   date: string;
 };
 
 function BlogLayout({ children, title, date }: Props) {
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
-
   return (
     <>
       <Head>
@@ -106,11 +122,12 @@ function BlogLayout({ children, title, date }: Props) {
       </Head>
       <DefaultLayout>
         <PostWrapper>
-          <h1>{title}</h1>
-          <span className="meta-date">{date}</span>
-          <ContentWrapper>
-            { children }
-          </ContentWrapper>
+          <PostHeader>
+            <Date>{date}</Date>
+            <h1>{title}</h1>
+            <hr />
+          </PostHeader>
+          { children }
         </PostWrapper>
       </DefaultLayout>
     </>

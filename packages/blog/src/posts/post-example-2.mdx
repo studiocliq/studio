@@ -2,8 +2,8 @@
 title: "Jekyll을 이용한 포스팅 프로세스 간소화"
 date: "2021-07-23"
 description: "Say Hello To The Worlsd"
-tags: ['HELLO', 'HI']
-featuredImage: '/images/posts/featured-images/post-example-2.jpg'
+tags: ["HELLO", "HI"]
+featuredImage: "/images/posts/featured-images/post-example-2.jpg"
 ---
 
 포스팅에 이어서, 원래는 AWS를 이용하여 서버를 만들고 이를 도메인과 연결하는 포스팅을 작성하려 했지만, 새롭게 알게된 **Jekyll**이라는 프로그램을 통해 블로그에 글을 쓰는 과정을 간소화할 수 있었기 때문에, 내용의 흐름상 이 포스팅을 먼저 하기로 했다.
@@ -17,13 +17,13 @@ featuredImage: '/images/posts/featured-images/post-example-2.jpg'
 1. Notion에서 블로그에 업로드할 원고를 작성
 2. 원고의 각 항목을 Heading, link, paragraph 등으로 분류하여 html tag로 작성
 3. 페이지에서 마음에 안드는 부분 혹은 스타일 오류가 발생하면 코드를 수정
-4. 수정된 내용을 기존 **모든 페이지마다 수정**
+4. 수정된 내용을 기존 `모든 페이지마다 수정`
 5. 글이 마음에 안들면 다시 HTML 파일에서 수정
 6. 서버에 업로드
 7. 업로드 후 마음에 안들면 다시 HTML 문서에서 수정 
 8. 서버에 재업로드
 
-```typescript
+```ts
 console.log('hello');
 ```
 
@@ -57,13 +57,13 @@ Jekyll은 Ruby라는 언어로 프로그래밍되어 있기 때문에 먼저 Rub
 
 설치 후, 웹사이트를 만들 프로젝트 디렉토리(root)를 하나 생성하고, 해당 디렉토리로 이동하여 다음 명령어를 입력하면, **Gemfile**이라는 파일이 생성된다.
 
-```bash
+``` bash
 bundle init
 ```
 
 Gemfile은 npm의 package.json 파일처럼, 프로젝트에 필요한 **라이브러리를 관리**하는 파일이다. Gemfile을 열어서 다음 코드를 추가하자.
 
-```yaml
+```yalm
 gem "jekyll"
 ```
 
@@ -85,12 +85,12 @@ jekyll serve -t
 (base) cliq@cliq:~/root$ jekyll serve -t
 Configuration file: ~/root/_config.yml
             Source: ~/root
-       Destination: ~/root/_site
- Incremental build: disabled. Enable with --incremental
+      Destination: ~/root/_site
+Incremental build: disabled. Enable with --incremental
       Generating... 
-       Jekyll Feed: Generating feed for posts
+      Jekyll Feed: Generating feed for posts
                     done in 0.455 seconds.
- Auto-regeneration: enabled for '~/root'
+Auto-regeneration: enabled for '~/root'
     Server address: http://127.0.0.1:4000
   Server running... press ctrl-c to stop.
 ```
@@ -107,17 +107,13 @@ Liquid는 Ruby로 프로그래밍된 **템플릿 언어**로, 만들어놓은 �
 
 - Object
 
-Object는 컨텐츠가 렌더링될 부분을 지정하는 역할을 한다. Double curly braces({{, }})를 통해 표현한다.
+Object는 컨텐츠가 렌더링될 부분을 지정하는 역할을 한다.
 
 ```
 {{ page.title }}
 ```
 
 위의 코드가 위치한 부분에 페이지의 title 변수가 렌더링된다.
-
-- Tags
-
-템플릿을 위한 산술, 논리 연산을 생성한다. {%, %}로 사용된다. 일반적인 프로그래밍 언어의 조건, 제어문과 같은 역할을 수행한다.
 
 ```
 {% if page.show_sidebar %}
@@ -176,6 +172,7 @@ html이나 markdown에서는 아래와 같이 사용하면 된다.
 
 Jekyll의 [Step by Step Tutorial](https://jekyllrb.com/docs/step-by-step/01-setup/)을 진행하면 마지막에는 다음과 같은 구조를 이루게 된다.
 
+```bash
 root/
 ├── assets/
 ├── _data/
@@ -184,6 +181,7 @@ root/
 ├── _posts/
 ├── _sass/
 └── _site/
+```
 
 ### assets
 

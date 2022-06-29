@@ -1,26 +1,38 @@
+import React, { useEffect } from 'react';
 import Head from 'next/head';
-import React from 'react';
+
+// MDX
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemoteSerializeResult, MDXRemote } from 'next-mdx-remote';
+
+// Styles
+import Prism from 'prismjs';
 import BlogLayout from '../../templates/BlogLayout';
-import { getAllBlogPostPaths } from 'src/utils/posts';
+import 'prismjs/themes/prism-okaidia.css';
+
+// Utils
+import { getAllBlogPostPid, getPostDataByPid } from 'src/utils/posts';
 
 type Props = {
   data: {
-    mdx: {
-      id: string;
-      slug: string;
-      body: string;
-      frontmatter: {
-        title: string;
-        date: string;
-        description: string;
-        tags: string[];
-      }
+    pid: string;
+    frontmatter: {
+      title: string;
+      description: string;
+      date: string;
+      tags: string[];
+      featuredImage: string[];
     }
+    content: MDXRemoteSerializeResult;
   }
 }
 
 function PostPage({ data }: Props) {
-  const { id, slug, body, frontmatter } = data.mdx;
+  const { frontmatter, content } = data;
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
 
   return (
     <>
@@ -31,23 +43,37 @@ function PostPage({ data }: Props) {
         title={frontmatter.title}
         date={frontmatter.date}
       >
-        { body }
+        <MDXRemote {...content} />
       </BlogLayout>
     </>
   )
 }
 
-export async function getStaticPaths() {
-  const posts = getAllBlogPostPaths();
-
-  return {
-    paths: [
-      { params: {
-        
-      }}
-    ],
-    fallback: false,
+export async function getStaticProps({ params }: {
+  params: {
+    pid: string;
   }
+}) {
+  const postData = await getPostDataByPid(params.pid);
+  const content = await serialize(postData.content);
+
+  return ({
+    props: {
+      data: {
+        ...postData,
+        content,
+      },
+    },
+  });
+}
+
+export async function getStaticPaths() {
+  const paths = getAllBlogPostPid();
+
+  return ({
+    paths,
+    fallback: false,
+  });
 }
 
 export default PostPage;
