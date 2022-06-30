@@ -66,7 +66,7 @@ const iconLinks = [
     src: '/images/icons/linkedin-icon.svg',
     alt: 'linkedin icon'
   }
-]
+];
 
 function Head({ close }: {
   close: () => void

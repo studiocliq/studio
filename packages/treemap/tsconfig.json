@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": [
+        "./src/components/*"
+      ],
+    },
+    "composite": true,
+    "noEmit": false,
+    "incremental": true
+  },
+  "include": ["./src/"],
+  "exclude": ["./dist"],
+}

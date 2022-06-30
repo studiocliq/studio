@@ -9,7 +9,7 @@ const Container = styled.span`
 
   padding: 6px 8px;
   border-radius: 4px;
-  background-color: ${colors.main};
+  background-color: ${colors.primary};
 
   font-size: 12px;
   color: #fff;

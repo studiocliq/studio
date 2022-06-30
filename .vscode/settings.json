@@ -2,7 +2,8 @@
   "git.ignoreLimitWarning": true,
   "search.exclude": {
     "**/.yarn": true,
-    "**/.pnp.*": true
+    "**/.pnp.*": true,
+    "./packages/blog/*": true,
   },
   "eslint.nodePath": ".yarn/sdks",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",

@@ -24,6 +24,9 @@
     {
       "path": "packages/blog"
     },
+    {
+      "path": "packages/treemap"
+    }
   ],
   "exclude": ["packages/**/dist/**"],
   "include": []
