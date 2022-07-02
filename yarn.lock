@@ -1428,6 +1428,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/polyfill@npm:^7.8.7":
+  version: 7.12.1
+  resolution: "@babel/polyfill@npm:7.12.1"
+  dependencies:
+    core-js: ^2.6.5
+    regenerator-runtime: ^0.13.4
+  checksum: 3f59a9d85a41b390b044a1be13e11ae6d8efbfcf4e07217964585c7cef337b828eecfc5e164083227189146d2b6efc1affae8f59c831438eb40b848ab6fe5f39
+  languageName: node
+  linkType: hard
+
 "@babel/preset-env@npm:^7.12.11, @babel/preset-env@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/preset-env@npm:7.18.6"
@@ -3678,6 +3688,8 @@ __metadata:
     "@babel/preset-env": ^7.18.6
     "@babel/preset-react": ^7.18.6
     "@babel/preset-typescript": ^7.18.6
+    styled-reset: ^4.4.1
+    treemap-squarify: ^1.0.1
     webpack: ^5.73.0
     webpack-cli: ^4.10.0
     webpack-dev-server: ^4.9.3
@@ -6711,6 +6723,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"core-js@npm:^2.6.5":
+  version: 2.6.12
+  resolution: "core-js@npm:2.6.12"
+  checksum: 44fa9934a85f8c78d61e0c8b7b22436330471ffe59ec5076fe7f324d6e8cf7f824b14b1c81ca73608b13bdb0fef035bd820989bf059767ad6fa13123bb8bd016
+  languageName: node
+  linkType: hard
+
 "core-js@npm:^3.0.4, core-js@npm:^3.6.5, core-js@npm:^3.8.2":
   version: 3.23.3
   resolution: "core-js@npm:3.23.3"
@@ -6970,6 +6989,13 @@ __metadata:
   version: 1.0.1
   resolution: "cyclist@npm:1.0.1"
   checksum: 3cc2fdeb358599ca0ea96f5ecf2fc530ccab7ed1f8aa1a894aebfacd2009281bd7380cb9b30db02a18cdd00b3ed1d7ce81a3b11fe56e33a6a0fe4424dc592fbe
+  languageName: node
+  linkType: hard
+
+"d3@npm:^3.5.3":
+  version: 3.5.17
+  resolution: "d3@npm:3.5.17"
+  checksum: 79b59275c36fa35a0af55f326bb56d65e14d71d44e96cbd05af767000af63c3ab8b3f479e2c25281afff7ba3f5858e272ded081e5d33807b005f217c4bfbd82d
   languageName: node
   linkType: hard
 
@@ -10433,6 +10459,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-extend@npm:0.0.2":
+  version: 0.0.2
+  resolution: "js-extend@npm:0.0.2"
+  checksum: 6e06fa82805f8df26481ffc2dd884d2027b56072ec11f24079b87420173481a9cb2dc4f9f960a9c3fdd85c1aadcbe2392bad7db2f093cbd58ea9092405b8db8b
+  languageName: node
+  linkType: hard
+
 "js-string-escape@npm:^1.0.1":
   version: 1.0.1
   resolution: "js-string-escape@npm:1.0.1"
@@ -13460,6 +13493,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prunner@npm:^1.0.1":
+  version: 1.0.5
+  resolution: "prunner@npm:1.0.5"
+  bin:
+    prunner: ./index.js
+  checksum: 139159ccfb39f0b35d23392d6befae5e549f37e8b3d2c617d146e9a01dd85dc88f5012d7a76982b3f64f6a7e804b56c6f250526d683b9be5e367f9dbdd29e976
+  languageName: node
+  linkType: hard
+
 "public-encrypt@npm:^4.0.0":
   version: 4.0.3
   resolution: "public-encrypt@npm:4.0.3"
@@ -15364,6 +15406,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "studio@workspace:."
   dependencies:
+    "@studio/monte": "workspace:^"
     "@types/node": ^18.0.0
     "@types/react": ^18.0.14
     "@types/react-dom": ^18.0.5
@@ -15373,6 +15416,7 @@ __metadata:
     react-dom: ^17.0.0
     react-is: ^18.2.0
     styled-components: ^5.3.5
+    treemap: ^1.0.4
     typescript: ^4.7.2
     typescript-styled-plugin: ^0.18.2
   languageName: unknown
@@ -15776,6 +15820,26 @@ __metadata:
   version: 0.0.3
   resolution: "tr46@npm:0.0.3"
   checksum: 726321c5eaf41b5002e17ffbd1fb7245999a073e8979085dacd47c4b4e8068ff5777142fc6726d6ca1fd2ff16921b48788b87225cbc57c72636f6efa8efbffe3
+  languageName: node
+  linkType: hard
+
+"treemap-squarify@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "treemap-squarify@npm:1.0.1"
+  dependencies:
+    "@babel/polyfill": ^7.8.7
+  checksum: f8efc01be838c19d42deb25781fbefe720cc2dd54d5f9a15e4f701e8201c88e5a0a663a4db02918b199af7bcd4274018499e011ddc8ec7d310d5526e3012039c
+  languageName: node
+  linkType: hard
+
+"treemap@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "treemap@npm:1.0.4"
+  dependencies:
+    d3: ^3.5.3
+    js-extend: 0.0.2
+    prunner: ^1.0.1
+  checksum: 2cba16b3ff98713541a0752241a57ead75a28e941cd219c6822956d4686df52e3c65c656ecfa970ecc13c05678c74f8b1652429f7baab1550bbb99309380dd73
   languageName: node
   linkType: hard
 

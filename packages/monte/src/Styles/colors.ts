@@ -2,17 +2,32 @@ const black = '#000000';
 const white = '#ffffff';
 
 const primaryPalette = {
-  0: '#E4102E',
-  10: '#E81B3F',
-  20: '#EB2148',
-  30: '#ED2752',
-  40: '#EF2C5A',
-  50: '#F14C73',
-  60: '#F46B8C',
-  70: '#F796AD',
-  80: '#FAC0CE',
-  90: '#FDE6EB',
-}
+  0: '#000000',
+  10: '#520F07',
+  20: '#A41D0E',
+  30: '#EC3420',
+  40: '#F37D71',
+  50: '#F5948A',
+  60: '#F7AAA1',
+  70: '#F9BFB9',
+  80: '#FBD4D0',
+  90: '#FDEAE8',
+  100: '#FFFFFF',
+};
+
+const bluePalette = {
+  0: '#000000',
+  10: '#092E4C',
+  20: '#135C98',
+  30: '#1D8AE3',
+  40: '#6AB2ED',
+  50: '#82BEF0',
+  60: '#9BCBF3',
+  70: '#B4D8F6',
+  80: '#CDE5F9',
+  90: '#E6F2FC',
+  100: '#FFFFFF',
+};
 
 const secondaryPalette = {
   0: '#372127',
@@ -44,4 +59,6 @@ export default {
   
   secondary,
   secondaryPalette,
+
+  bluePalette,
 };

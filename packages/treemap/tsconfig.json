@@ -12,6 +12,6 @@
     "noEmit": false,
     "incremental": true
   },
-  "include": ["./src/"],
+  "include": ["./src/**/*", "./@types"],
   "exclude": ["./dist"],
 }

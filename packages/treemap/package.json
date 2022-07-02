@@ -27,6 +27,8 @@
     ]
   },
   "dependencies": {
+    "styled-reset": "^4.4.1",
+    "treemap-squarify": "^1.0.1",
     "webpack-html-plugin": "^0.1.1"
   }
 }
