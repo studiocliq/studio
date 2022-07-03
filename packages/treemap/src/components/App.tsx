@@ -3,10 +3,11 @@ import styled, { css } from 'styled-components';
 
 import { StockSector } from 'components/Sector';
 
-import { Sector as ISector } from 'src/react-hooks/useSector';
 import useTreemap from 'src/react-hooks/useTreemap';
+import useAllStocks from 'src/react-hooks/useAllStocks';
 
 import GlobalStyles from 'src/GlobalStyles';
+import { Sector as ISector } from 'src/utils/types';
 
 type TreemapInputSector = {
   value: number;
@@ -46,7 +47,8 @@ const Container = styled.div`
 `;
 
 function App() {
-  const treemap = useTreemap({ data });
+  const treemapArea = useTreemap({ data });
+  const stocks = useAllStocks();
 
   return (
     <>
@@ -54,16 +56,22 @@ function App() {
       <Wrap>
         <Container>
           {
-            treemap?.map((sector) => (
-              <StockSector
-                label={sector.label}
-                sector={sector.label}
-                width={sector.width}
-                height={sector.height}
-                x={sector.x}
-                y={sector.y}
-              />
-            ))
+            treemapArea?.map((sector) => {
+              const stocksInSector = stocks
+                ?.filter((stock) => stock.sector === sector.label)
+              
+              return (
+                <StockSector
+                  stocks={stocksInSector}
+                  label={sector.label}
+                  sector={sector.label}
+                  width={sector.width}
+                  height={sector.height}
+                  x={sector.x}
+                  y={sector.y}
+                />
+              )
+            })
           }
         </Container>
       </Wrap>

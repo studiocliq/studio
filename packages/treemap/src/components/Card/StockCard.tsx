@@ -7,20 +7,34 @@ type Props = {
   name: string;
   price: number;
   close: number;
-  marketCap: number;
+  geometry: Geometry
+};
+
+type Geometry = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
 }
 
 type WrapProps = {
   change: number;
-}
+} & Geometry;
 
 const Wrap = styled.div<WrapProps>`
-  border-radius: 5%;
+  position: absolute;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${(props) => css`
+    width: ${props.width}%;
+    height: ${props.height}%;
+    left: ${props.x}%;
+    top: ${props.y}%;
+  `};
 
   border: 1px solid pink;
 
@@ -33,7 +47,7 @@ const Wrap = styled.div<WrapProps>`
 
     if (change === 0) {
       return css`
-        background-color: rgba(0, 0, 0, .3);
+        background-color: orange;
       `;
     }
 
@@ -58,10 +72,10 @@ const Change = styled.span`
   color: #fff;
 `;
 
-function StockCard({ name, price, close }: Props) {
+function StockCard({ name, price, close, geometry }: Props) {
   const change = (100 * (price - close) / (price)).toFixed(2);
   return (
-    <Wrap change={price - close}>
+    <Wrap change={price - close} {...geometry}>
       <Name>{ name }</Name>
       <Change>{ `${change}%` }</Change>
     </Wrap>

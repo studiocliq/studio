@@ -1,10 +1,17 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import useSector, { Sector as ISector } from 'src/react-hooks/useSector';
+// Components
 import { StockCard } from 'components/Card';
 
+// Utils
+import { Sector as ISector, Stock } from 'src/utils/types';
+
+// React Hooks
+import useSector from 'src/react-hooks/useSector';
+
 type Props = {
+  stocks: Stock[];
   label: string;
   sector: ISector;
   width: number;
@@ -38,10 +45,6 @@ const Wrap = styled.div<Position>`
   `};
 `;
 
-const StockWrap = styled.div`
-  display: flex;  
-`;
-
 const Label = styled.div`
   display: inline-block;
   width: 100%;
@@ -49,23 +52,60 @@ const Label = styled.div`
   font-size: 18px;
 `;
 
-function Sector({ label, sector, width, height, x, y }: Props) {
-  const stocks = useSector({ sector });
+const Scrim = styled.div`
+  width: 100%;
+  height: 100%;
 
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, .3);
+
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+
+  &:hover {
+    opacity: 0;
+  }
+`;
+
+function Sector({ stocks, label, sector, width, height, x, y }: Props) {
+  const stocksInSector = useSector({
+      data: stocks?.map((stock) => ({
+        value: stock.marketCap,
+        ...stock,
+      })),
+    }
+  );
+
+  console.log(stocks, stocksInSector);
+  
   return (
     <Wrap width={width} height={height} x={x} y={y}>
       <Label>{label}</Label>
       {
-        stocks?.map((stock) => (
+        stocksInSector?.map((stock) => (
           <StockCard
             key={stock.code}
             name={stock.name}
             price={stock.price}
             close={stock.close}
-            marketCap={stock.marketCap}
+            geometry={{
+              width: stock.width,
+              height: stock.height,
+              x: stock.x,
+              y: stock.y,
+            }}
           />
         ))
       }
+      <Scrim>
+        { sector }
+      </Scrim>
     </Wrap>
   );
 }
