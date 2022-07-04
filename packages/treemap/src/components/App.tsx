@@ -59,9 +59,14 @@ function App() {
             treemapArea?.map((sector) => {
               const stocksInSector = stocks
                 ?.filter((stock) => stock.sector === sector.label)
+
+              if(!stocksInSector) {
+                return;
+              }
               
               return (
                 <StockSector
+                  key={sector.label}
                   stocks={stocksInSector}
                   label={sector.label}
                   sector={sector.label}

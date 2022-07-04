@@ -9,6 +9,7 @@ import { Sector as ISector, Stock } from 'src/utils/types';
 
 // React Hooks
 import useSector from 'src/react-hooks/useSector';
+import Scrim from './Scrim';
 
 type Props = {
   stocks: Stock[];
@@ -45,34 +46,6 @@ const Wrap = styled.div<Position>`
   `};
 `;
 
-const Label = styled.div`
-  display: inline-block;
-  width: 100%;
-  font-weight: 700;
-  font-size: 18px;
-`;
-
-const Scrim = styled.div`
-  width: 100%;
-  height: 100%;
-
-  position: absolute;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: rgba(0, 0, 0, .3);
-
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-
-  &:hover {
-    opacity: 0;
-  }
-`;
-
 function Sector({ stocks, label, sector, width, height, x, y }: Props) {
   const stocksInSector = useSector({
       data: stocks?.map((stock) => ({
@@ -82,11 +55,8 @@ function Sector({ stocks, label, sector, width, height, x, y }: Props) {
     }
   );
 
-  console.log(stocks, stocksInSector);
-  
   return (
     <Wrap width={width} height={height} x={x} y={y}>
-      <Label>{label}</Label>
       {
         stocksInSector?.map((stock) => (
           <StockCard
@@ -103,9 +73,7 @@ function Sector({ stocks, label, sector, width, height, x, y }: Props) {
           />
         ))
       }
-      <Scrim>
-        { sector }
-      </Scrim>
+      <Scrim sector={sector} />
     </Wrap>
   );
 }
