@@ -6,7 +6,7 @@ import { StockSector } from 'components/Sector';
 import useTreemap from 'src/react-hooks/useTreemap';
 import useAllStocks from 'src/react-hooks/useAllStocks';
 
-import GlobalStyles from 'src/GlobalStyles';
+import { GlobalStyles } from 'src/styles';
 import { Sector as ISector } from 'src/utils/types';
 
 type TreemapInputSector = {

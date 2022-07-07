@@ -1,3 +1,2 @@
-import { default as colors } from './colors';
-
-export { colors };
+export { default as colors } from './colors';
+export { default as GlobalStyles } from './GlobalStyles';

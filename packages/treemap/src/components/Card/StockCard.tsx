@@ -17,11 +17,7 @@ type Geometry = {
   height: number;
 }
 
-type WrapProps = {
-  change: number;
-} & Geometry;
-
-const Wrap = styled.div<WrapProps>`
+const Wrap = styled.div<Geometry>`
   position: absolute;
 
   display: flex;
@@ -29,6 +25,10 @@ const Wrap = styled.div<WrapProps>`
   justify-content: center;
   align-items: center;
 
+  background-color: transparent;
+  border: 1px solid #dddddd;
+
+  perspective: 1000px;
   transition: .1s;
 
   ${(props) => css`
@@ -38,16 +38,35 @@ const Wrap = styled.div<WrapProps>`
     top: ${props.y}%;
 
     &:hover {
-      width: ${props.width + 4}%;
-      height: ${props.height+ 4}%;
-      left: ${props.x - 2}%;
-      top: ${props.y - 2}%;
+      width: ${props.width + 2}%;
+      height: ${props.height+ 2}%;
+      left: ${props.x - 1}%;
+      top: ${props.y - 1}%;
 
       z-index: 1;
     }
   `};
+`;
 
-  border: 1px solid #dddddd;
+const Inner = styled.div<{ backward: boolean }>`
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+  transition: .8s;
+
+  ${({ backward }) => backward && css`
+    transform: rotateY(180deg);
+  `}
+`;
+
+const Side = styled.div<{ change: number }>`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
 
   ${({ change }) => {
     if (change > 0) {
@@ -70,18 +89,19 @@ const Wrap = styled.div<WrapProps>`
   }}
 `;
 
-const Content = styled.div<{ area: number; }>`
+const Front = styled(Side)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  
+  font-size: 20px;
   font-weight: 700;
   color: #fff;
+`;
 
-  ${({ area }) => css`
-    font-size: ${area/2000}px;
-  `}
+const Back = styled(Side)`
+  transform: rotateY(180deg);
 `;
 
 const Name = styled.span`
@@ -93,9 +113,14 @@ const Change = styled.span`
 
 function StockCard({ name, price, close, geometry }: Props) {
   const [area, setArea] = useState<number>();
+  const [backward, setBackward] = useState<boolean>(false);
 
   const change = (100 * (price - close) / (price)).toFixed(2);
   const ref = useRef<HTMLDivElement>(null);
+
+  function handleClick() {
+    setBackward(!backward);
+  }
 
   useEffect(() => {
     const width = ref.current?.offsetWidth;
@@ -109,16 +134,23 @@ function StockCard({ name, price, close, geometry }: Props) {
   }, [ref.current]);
 
   return (
-    <Wrap change={price - close} {...geometry} ref={ref}>
-      {
-        area && area > 1000
-          && (
-            <Content area={area}>
-              <Name>{ name }</Name>
-              <Change>{ `${change}%` }</Change>
-            </Content>
-          )
-      }
+    <Wrap {...geometry} ref={ref} onClick={handleClick}>
+      <Inner backward={backward}>
+        <Front change={price - close}>
+          {
+            (area && area > 1000)
+              && (
+                <>
+                  <Name>{ name }</Name>
+                  <Change>{ `${change}%` }</Change>
+                </>
+              )
+          }
+        </Front>
+        <Back change={price - close}>
+          BackWard Page
+        </Back>
+      </Inner>
     </Wrap>
   )
 }
