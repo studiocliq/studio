@@ -12,6 +12,7 @@ type Props = {
 type TooltipProps = {
   mode: 'pointer' | 'component';
   position: 'top' | 'left' | 'right' | 'bottom';
+  view: boolean;
   positionX?: number;
   positionY?: number;
 }
@@ -23,16 +24,23 @@ const Wrap = styled.div`
 const Target = styled.div`
 `;
 
-const Container = styled.div<TooltipProps>`
+const Container = styled('div')<TooltipProps>`
   position: fixed;
   border: 3px solid green;
+  visibility: hidden;
 
-  ${({ mode, positionY, positionX }) => (mode === 'pointer') && css`
-    background-color: pink;
+  ${({ positionX, positionY }) => (
+    css`
+      top: ${positionY}px;
+      left: ${positionX}px;
+    `
+  )};
 
-    top: calc(${positionY}px);
-    left: calc(${positionX}px + 30px);
-  `};
+  ${({ view }) => (
+    view && css`
+      visibility: visible;
+    `
+  )};
 `;
 
 function Tooltip({ children, target, position, mode }: Props) {
@@ -47,27 +55,26 @@ function Tooltip({ children, target, position, mode }: Props) {
     setIsHovered(false);
   }
 
+  console.log(isHovered);
+
   return (
-    <Wrap>
-      <Target
-        onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
-        onMouseOut={handleMouseOut}
-      >
+    <Wrap
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseOut}
+    >
+      <Target>
         { target }
       </Target>
-      {
-        isHovered && (
-          <Container
-            mode={mode || 'pointer'}
-            position={position || 'right'}
-            positionX={coords.x}
-            positionY={coords.y}
-          >
-            { children }
-          </Container>
-        )
-      }
+      <Container
+        mode={mode || 'pointer'}
+        position={position || 'right'}
+        positionX={coords.x}
+        positionY={coords.y}
+        view={isHovered}
+      >
+        { children }
+      </Container>
     </Wrap>
   );
 }

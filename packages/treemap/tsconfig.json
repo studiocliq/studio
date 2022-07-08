@@ -6,12 +6,18 @@
     "paths": {
       "components/*": [
         "./src/components/*"
-      ],
+      ]
     },
     "composite": true,
     "noEmit": false,
-    "incremental": true
+    "incremental": true,
+    "allowJs": true
   },
-  "include": ["./src/**/*", "./@types"],
-  "exclude": ["./dist"],
+  "include": [
+    "./src/**/*",
+    "./@types"
+  ],
+  "exclude": [
+    "./dist"
+  ]
 }
